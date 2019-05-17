@@ -280,6 +280,7 @@ class PluginConnectionsConnection_Item extends CommonDBRelation {
          echo "<th>" . __('Entity') . "</th>";
       echo "<th>" . __('Serial number') . "</th>";
       echo "<th>" . __('Inventory number') . "</th>";
+      echo "<th>" . __('Location') . "</th>";
       echo "</tr>";
 
       for ($i = 0; $i < $number; $i++) {
@@ -345,6 +346,10 @@ class PluginConnectionsConnection_Item extends CommonDBRelation {
 
                      echo "<td class='center'>" . (isset($data["serial"]) ? "" . $data["serial"] . "" : "-") . "</td>";
                      echo "<td class='center'>" . (isset($data["otherserial"]) ? "" . $data["otherserial"] . "" : "-") . "</td>";
+		     $location_link = Toolbox::getItemTypeFormURL('Location');
+                     $location_name = "<a href=\"" . $location_link . "?id=" . $data['locations_id'] . "\">"
+                             . Dropdown::getDropdownName("glpi_locations", $data['locations_id']) . "</a>";
+		     echo "<td class='center'>" . (isset($data["locations_id"]) ? "" . $location_name . "" : "-") . "</td>";
 
                      echo "</tr>";
                   }
